@@ -122,4 +122,31 @@ public class GUIKontroler {
 					"Greska", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	
+	public static void unesiKurs(String naziv, String skraceniNaziv, Object sifra, String prodajni, String srednji, String kupovni) {
+		try {
+			Valuta valuta = new Valuta();
+
+			// Punjenje podataka o valuti
+			valuta.setNaziv(naziv);
+			valuta.setSkraceniNaziv(skraceniNaziv);
+			valuta.setSifra((Integer)sifra);
+			valuta.setProdajni(Double.parseDouble(prodajni));
+			valuta.setKupovni(Double.parseDouble(kupovni));
+			valuta.setSrednji(Double.parseDouble(srednji));
+			
+			// Dodavanje valute u kursnu listu
+			GUIKontroler.sistem.dodajValutu(valuta);
+
+			// Osvezavanje glavnog prozora
+			GUIKontroler.prikaziSveValute();
+			
+
+		} catch (Exception e1) {
+			JOptionPane.showMessageDialog(null, e1.getMessage(),
+					"Greska", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	
 }

@@ -179,28 +179,9 @@ public class DodajKursGUI extends JFrame {
 	}
 	
 	private void unesiKurs() {
-		try {
-			Valuta valuta = new Valuta();
-
-			// Punjenje podataka o valuti
-			valuta.setNaziv(textFieldNaziv.getText());
-			valuta.setSkraceniNaziv(textFieldSkraceniNaziv.getText());
-			valuta.setSifra((Integer)(spinnerSifra.getValue()));
-			valuta.setProdajni(Double.parseDouble(textFieldProdajniKurs.getText()));
-			valuta.setKupovni(Double.parseDouble(textFieldKupovniKurs.getText()));
-			valuta.setSrednji(Double.parseDouble(textFieldSrednjiKurs.getText()));
-			
-			// Dodavanje valute u kursnu listu
-			GUIKontroler.sistem.dodajValutu(valuta);
-
-			// Osvezavanje glavnog prozora
-			GUIKontroler.prikaziSveValute();
-			
+			GUIKontroler.unesiKurs(textFieldNaziv.getText(), textFieldSkraceniNaziv.getText(), spinnerSifra.getValue(), textFieldProdajniKurs.getText(), textFieldSrednjiKurs.getText(), textFieldKupovniKurs.getText());
 			//Zatvaranje DodajValutuGUI prozora
 			dispose();
-		} catch (Exception e1) {
-			JOptionPane.showMessageDialog(contentPane, e1.getMessage(),
-					"Greska", JOptionPane.ERROR_MESSAGE);
-		}
+		
 	}
 }
